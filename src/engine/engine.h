@@ -18,7 +18,7 @@ namespace i6
         unsigned long long next_prime_threaded(unsigned long long x);
 
         // 2.cpp
-
+        int opengl();
 
         // 3.cpp
 

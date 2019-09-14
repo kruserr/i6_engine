@@ -46,6 +46,11 @@ enable_cxx_compiler_flag_if_supported("-Ofast")
 enable_cxx_compiler_flag_if_supported("/W4")
 enable_cxx_compiler_flag_if_supported("/O2")
 
+# OpenGL Commands
+#enable_cxx_compiler_flag_if_supported("-lSDL2main")
+enable_cxx_compiler_flag_if_supported("-lSDL2")
+
+
 # Default to Build Type Release else use User Setting
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Select Type of Build: Debug, Release, RelWithDebInfo, MinSizeRel." FORCE)
