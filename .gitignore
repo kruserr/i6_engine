@@ -5,10 +5,10 @@
 .idea/*
 
 # Build and Binary
-Build/*
-build/*
-bin/*
-bin-int/*
+#Build/*
+#build/*
+#bin/*
+#bin-int/*
 
 # Temp files
 CMakeCXXCompilerId.gcno

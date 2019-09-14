@@ -1,3 +1,0 @@
-/home/ragnar/projects/github/i6_engine/build/CMakeFiles/rebuild_cache.dir
-/home/ragnar/projects/github/i6_engine/build/CMakeFiles/i6_engine.dir
-/home/ragnar/projects/github/i6_engine/build/CMakeFiles/edit_cache.dir
