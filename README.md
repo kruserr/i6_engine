@@ -14,6 +14,7 @@ sudo dnf install glew-devel SDL2-devel SDL2_image-devel glm-devel freetype-devel
 
 ```
 git clone https://github.com/kruserr/i6_engine.git
+cd i6_engine
 ./run.sh
 
 ```
