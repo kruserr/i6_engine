@@ -6,7 +6,9 @@ Straight-Six Engine
 
 # Deps
 
+```
 sudo dnf install glew-devel SDL2-devel SDL2_image-devel glm-devel freetype-devel
+```
 
 <br>
 
