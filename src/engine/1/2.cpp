@@ -15,14 +15,16 @@ namespace i6
         }
 
         SDL_Window *win = SDL_CreateWindow("i6_engine", 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-        if (win == nullptr){
+        if (win == nullptr)
+        {
             std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
             SDL_Quit();
             return 1;
         }
 
         SDL_Renderer *ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-        if (ren == nullptr){
+        if (ren == nullptr)
+        {
             SDL_DestroyWindow(win);
             std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
             SDL_Quit();
