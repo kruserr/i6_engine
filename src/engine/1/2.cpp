@@ -31,6 +31,9 @@ namespace i6
 
         SDL_Surface *bmp = SDL_LoadBMP("src/inc/bitmap.bmp");
         if (bmp == nullptr)
+            bmp = SDL_LoadBMP("../src/inc/bitmap.bmp");
+
+        if (bmp == nullptr)
         {
             SDL_DestroyRenderer(ren);
             SDL_DestroyWindow(win);
