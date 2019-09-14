@@ -29,8 +29,7 @@ namespace i6
             return 1;
         }
 
-        //std::string imagePath = getResourcePath("Lesson1") + "hello.bmp";
-        SDL_Surface *bmp = SDL_LoadBMP("bitmap.bmp");
+        SDL_Surface *bmp = SDL_LoadBMP("src/inc/bitmap.bmp");
         if (bmp == nullptr)
         {
             SDL_DestroyRenderer(ren);
