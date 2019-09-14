@@ -7,7 +7,7 @@ int main()
     #endif
 
     i6::Render render;
-    i6::Proc proc;
+    //i6::Proc proc;
     i6::Engine engine;
 
     render.clear_console();

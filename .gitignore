@@ -1,0 +1,18 @@
+# Editors
+.vs/*
+#.vscode/*
+.atom/*
+.idea/*
+
+# Build and Binary
+Build/*
+build/*
+bin/*
+bin-int/*
+
+# Temp files
+CMakeCXXCompilerId.gcno
+main.gcno
+clangscript.out
+gccscript.out
+pch.h.gch

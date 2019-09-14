@@ -1,10 +1,10 @@
 Performing C++ SOURCE FILE Test flag_supported failed with the following output:
 Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja-build cmTC_0cdc9 
-[1/2] Building CXX object CMakeFiles/cmTC_0cdc9.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_0cdc9.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Dflag_supported   -Weverything -o CMakeFiles/cmTC_0cdc9.dir/src.cxx.o -c src.cxx
+Run Build Command(s):/usr/bin/ninja-build cmTC_01b03 
+[1/2] Building CXX object CMakeFiles/cmTC_01b03.dir/src.cxx.o
+FAILED: CMakeFiles/cmTC_01b03.dir/src.cxx.o 
+/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Dflag_supported   -Weverything -o CMakeFiles/cmTC_01b03.dir/src.cxx.o -c src.cxx
 c++: error: unrecognized command line option '-Weverything'
 ninja: build stopped: subcommand failed.
 
@@ -13,10 +13,10 @@ int main() { return 0; }
 Performing C++ SOURCE FILE Test flag_supported failed with the following output:
 Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja-build cmTC_5e816 
-[1/2] Building CXX object CMakeFiles/cmTC_5e816.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_5e816.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /W4 -o CMakeFiles/cmTC_5e816.dir/src.cxx.o -c src.cxx
+Run Build Command(s):/usr/bin/ninja-build cmTC_f7fca 
+[1/2] Building CXX object CMakeFiles/cmTC_f7fca.dir/src.cxx.o
+FAILED: CMakeFiles/cmTC_f7fca.dir/src.cxx.o 
+/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /W4 -o CMakeFiles/cmTC_f7fca.dir/src.cxx.o -c src.cxx
 c++: error: /W4: No such file or directory
 ninja: build stopped: subcommand failed.
 
@@ -25,154 +25,10 @@ int main() { return 0; }
 Performing C++ SOURCE FILE Test flag_supported failed with the following output:
 Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja-build cmTC_b4aa9 
-[1/2] Building CXX object CMakeFiles/cmTC_b4aa9.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_b4aa9.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /O2 -o CMakeFiles/cmTC_b4aa9.dir/src.cxx.o -c src.cxx
-c++: error: /O2: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_0bf2b 
-[1/2] Building CXX object CMakeFiles/cmTC_0bf2b.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_0bf2b.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Dflag_supported   -Weverything -o CMakeFiles/cmTC_0bf2b.dir/src.cxx.o -c src.cxx
-c++: error: unrecognized command line option '-Weverything'
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_8dd52 
-[1/2] Building CXX object CMakeFiles/cmTC_8dd52.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_8dd52.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /W4 -o CMakeFiles/cmTC_8dd52.dir/src.cxx.o -c src.cxx
-c++: error: /W4: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_e76fe 
-[1/2] Building CXX object CMakeFiles/cmTC_e76fe.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_e76fe.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /O2 -o CMakeFiles/cmTC_e76fe.dir/src.cxx.o -c src.cxx
-c++: error: /O2: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_e0dde 
-[1/2] Building CXX object CMakeFiles/cmTC_e0dde.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_e0dde.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Dflag_supported   -Weverything -o CMakeFiles/cmTC_e0dde.dir/src.cxx.o -c src.cxx
-c++: error: unrecognized command line option '-Weverything'
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_c3a31 
-[1/2] Building CXX object CMakeFiles/cmTC_c3a31.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_c3a31.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /W4 -o CMakeFiles/cmTC_c3a31.dir/src.cxx.o -c src.cxx
-c++: error: /W4: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_0f5d2 
-[1/2] Building CXX object CMakeFiles/cmTC_0f5d2.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_0f5d2.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /O2 -o CMakeFiles/cmTC_0f5d2.dir/src.cxx.o -c src.cxx
-c++: error: /O2: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_ac0b4 
-[1/2] Building CXX object CMakeFiles/cmTC_ac0b4.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_ac0b4.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Dflag_supported   -Weverything -o CMakeFiles/cmTC_ac0b4.dir/src.cxx.o -c src.cxx
-c++: error: unrecognized command line option '-Weverything'
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_3e296 
-[1/2] Building CXX object CMakeFiles/cmTC_3e296.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_3e296.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /W4 -o CMakeFiles/cmTC_3e296.dir/src.cxx.o -c src.cxx
-c++: error: /W4: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_173a6 
-[1/2] Building CXX object CMakeFiles/cmTC_173a6.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_173a6.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /O2 -o CMakeFiles/cmTC_173a6.dir/src.cxx.o -c src.cxx
-c++: error: /O2: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_0ee8c 
-[1/2] Building CXX object CMakeFiles/cmTC_0ee8c.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_0ee8c.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Dflag_supported   -Weverything -o CMakeFiles/cmTC_0ee8c.dir/src.cxx.o -c src.cxx
-c++: error: unrecognized command line option '-Weverything'
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_88fa9 
-[1/2] Building CXX object CMakeFiles/cmTC_88fa9.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_88fa9.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /W4 -o CMakeFiles/cmTC_88fa9.dir/src.cxx.o -c src.cxx
-c++: error: /W4: No such file or directory
-ninja: build stopped: subcommand failed.
-
-Source file was:
-int main() { return 0; }
-Performing C++ SOURCE FILE Test flag_supported failed with the following output:
-Change Dir: /home/ragnar/projects/github/i6_engine/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja-build cmTC_38062 
-[1/2] Building CXX object CMakeFiles/cmTC_38062.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_38062.dir/src.cxx.o 
-/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /O2 -o CMakeFiles/cmTC_38062.dir/src.cxx.o -c src.cxx
+Run Build Command(s):/usr/bin/ninja-build cmTC_08737 
+[1/2] Building CXX object CMakeFiles/cmTC_08737.dir/src.cxx.o
+FAILED: CMakeFiles/cmTC_08737.dir/src.cxx.o 
+/usr/bin/c++    -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -Dflag_supported   /O2 -o CMakeFiles/cmTC_08737.dir/src.cxx.o -c src.cxx
 c++: error: /O2: No such file or directory
 ninja: build stopped: subcommand failed.
 

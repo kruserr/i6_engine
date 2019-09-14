@@ -1,31 +1,31 @@
 [
 {
   "directory": "/home/ragnar/projects/github/i6_engine/build",
-  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -O2 -DNDEBUG   -o CMakeFiles/i6_engine.dir/src/main.cpp.o -c /home/ragnar/projects/github/i6_engine/src/main.cpp",
+  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -g   -o CMakeFiles/i6_engine.dir/src/main.cpp.o -c /home/ragnar/projects/github/i6_engine/src/main.cpp",
   "file": "/home/ragnar/projects/github/i6_engine/src/main.cpp"
 },
 
 {
   "directory": "/home/ragnar/projects/github/i6_engine/build",
-  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -O2 -DNDEBUG   -o CMakeFiles/i6_engine.dir/src/engine/engine.cpp.o -c /home/ragnar/projects/github/i6_engine/src/engine/engine.cpp",
+  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -g   -o CMakeFiles/i6_engine.dir/src/engine/engine.cpp.o -c /home/ragnar/projects/github/i6_engine/src/engine/engine.cpp",
   "file": "/home/ragnar/projects/github/i6_engine/src/engine/engine.cpp"
 },
 
 {
   "directory": "/home/ragnar/projects/github/i6_engine/build",
-  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -O2 -DNDEBUG   -o CMakeFiles/i6_engine.dir/src/etc/timer/timer.cpp.o -c /home/ragnar/projects/github/i6_engine/src/etc/timer/timer.cpp",
+  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -g   -o CMakeFiles/i6_engine.dir/src/etc/timer/timer.cpp.o -c /home/ragnar/projects/github/i6_engine/src/etc/timer/timer.cpp",
   "file": "/home/ragnar/projects/github/i6_engine/src/etc/timer/timer.cpp"
 },
 
 {
   "directory": "/home/ragnar/projects/github/i6_engine/build",
-  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -O2 -DNDEBUG   -o CMakeFiles/i6_engine.dir/src/etc/render/render.cpp.o -c /home/ragnar/projects/github/i6_engine/src/etc/render/render.cpp",
+  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -g   -o CMakeFiles/i6_engine.dir/src/etc/render/render.cpp.o -c /home/ragnar/projects/github/i6_engine/src/etc/render/render.cpp",
   "file": "/home/ragnar/projects/github/i6_engine/src/etc/render/render.cpp"
 },
 
 {
   "directory": "/home/ragnar/projects/github/i6_engine/build",
-  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -O2 -DNDEBUG   -o CMakeFiles/i6_engine.dir/src/etc/proc/proc.cpp.o -c /home/ragnar/projects/github/i6_engine/src/etc/proc/proc.cpp",
+  "command": "/usr/bin/c++     -std=c++11 -Wall -Wextra -O3 -pthread -Ofast -g   -o CMakeFiles/i6_engine.dir/src/etc/proc/proc.cpp.o -c /home/ragnar/projects/github/i6_engine/src/etc/proc/proc.cpp",
   "file": "/home/ragnar/projects/github/i6_engine/src/etc/proc/proc.cpp"
 }
 ]
