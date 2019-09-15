@@ -17,10 +17,11 @@
 #include "etc/render/render.h"      // Rendering Functions
 #include "etc/proc/proc.h"          // Data Processing Functions
 
+// Etc
+#include "SDL2/SDL.h"
+
 // Engine Classes
 #include "engine/engine.h"
 
-// Etc
-#include "SDL2/SDL.h"
 
 #endif

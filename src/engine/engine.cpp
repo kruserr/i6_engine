@@ -1,8 +1,9 @@
 #include "../pch.h"
-#include "1/1.cpp"
-#include "1/2.cpp"
-#include "1/3.cpp"
-#include "1/4.cpp"
+#include "components/maintence.cpp"
+#include "components/debug.cpp"
+#include "components/core.cpp"
+#include "components/texture.cpp"
+#include "components/game.cpp"
 
 namespace i6
 {
@@ -24,7 +25,7 @@ namespace i6
         std::cout << is_prime_threaded(x) << '\n';
         std::cout << is_prime_threaded(x) << "\n\n"; */
 
-        opengl();
+        game_loop();
     }
 
     Engine::~Engine()
