@@ -40,7 +40,7 @@ namespace i6
         SDL_Texture *image = load_texture("image.bmp", renderer);
 
         // Game Loop
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 500; i++)
         {
             // Clear Renderer
             SDL_RenderClear(renderer);
@@ -58,8 +58,8 @@ namespace i6
             // Render Renderer
             SDL_RenderPresent(renderer);
 
-            // Sleep 1s
-            SDL_Delay(1000);
+            // Sleep
+            SDL_Delay(10);
         }
 
         // Clean and Exit
