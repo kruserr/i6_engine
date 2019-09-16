@@ -24,6 +24,11 @@ namespace i6
         player_height = height;
     }
 
+    void Engine::set_player_speed(int speed)
+    {
+        player_speed = speed;
+    }
+
     int Engine::get_player_x()
     {
         return player_pos_x;
@@ -102,16 +107,16 @@ namespace i6
                 switch (event.key.keysym.sym)
                 {
                     case SDLK_LEFT:
-                        set_player_x(get_player_x() - 1);
+                        set_player_x(get_player_x() - player_speed);
                         return false;
                     case SDLK_RIGHT:
-                        set_player_x(get_player_x() + 1);
+                        set_player_x(get_player_x() + player_speed);
                         return false;
                     case SDLK_UP:
-                        set_player_y(get_player_y() + 1);
+                        set_player_y(get_player_y() + player_speed);
                         return false;
                     case SDLK_DOWN:
-                        set_player_y(get_player_y() - 1);
+                        set_player_y(get_player_y() - player_speed);
                         return false;
                 }
                 return false;

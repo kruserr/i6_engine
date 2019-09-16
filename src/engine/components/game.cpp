@@ -46,6 +46,8 @@ namespace i6
         set_player_width(query_width);
         set_player_height(query_height);
 
+        set_player_speed(2);
+
         // Game Loop
         while (!quit)
         {

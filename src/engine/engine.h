@@ -13,6 +13,7 @@ namespace i6
         int player_pos_y = 0;
         int player_width = 0;
         int player_height = 0;
+        double player_speed = 1;
         
     public:
         Engine();
@@ -39,6 +40,7 @@ namespace i6
         void set_player_y(int pos_y);
         void set_player_width(int width);
         void set_player_height(int height);
+        void set_player_speed(int speed);
         int get_player_x();
         int get_player_y();
         int compute_player_x();
