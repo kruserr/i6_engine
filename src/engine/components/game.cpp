@@ -4,7 +4,8 @@ namespace i6
 {
     int Engine::game_loop()
     {
-        int query_width, query_height;
+        int query_width = 0;
+        int query_height = 0;
 
         // Init
         if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -36,34 +37,45 @@ namespace i6
         }
 
         // Load Textures
-        SDL_Texture *background = load_texture("background.bmp", renderer);
-        SDL_Texture *image = load_texture("image.bmp", renderer);
+        //SDL_Texture *background = load_texture("background.bmp", renderer);
+        //SDL_Texture *image = load_texture("image.bmp", renderer);
+        SDL_Texture *image = load_texture("/stick_figure/stick_figure.bmp", renderer);
+        SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
 
         // Game Loop
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < screen_width - query_width; i++)
         {
             // Clear Renderer
             SDL_RenderClear(renderer);
 
             // Render Background
-            SDL_QueryTexture(background, NULL, NULL, &query_width, &query_height);
+            /* SDL_QueryTexture(background, NULL, NULL, &query_width, &query_height);
             for (int width = query_width; width <= screen_width; width += query_width)
                 for (int height = query_height; height <= screen_height; height += query_height)
-                    render_texture(background, renderer, screen_width - width, screen_height - height);
+                    render_texture(background, renderer, screen_width - width, screen_height - height); */
+
+            if (i < 101)
+                set_player(i, 0);
+            else if (i > ((screen_width / 2) - query_width) && i < (((screen_width / 2) + 101) - query_width))
+                set_player(i, player_pos_y + 2);
+            else if (i > (((screen_width / 2) + 100) - query_width) && i < (((screen_width / 2) + 201) - query_width))
+                set_player(i, player_pos_y - 2);
+            else
+                set_player(i, player_pos_y);
             
             // Render Image
             SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
-            render_texture(image, renderer, (screen_width - query_width) / 2, (screen_height - query_width) / 2);
+            render_texture(image, renderer, player_pos_x, screen_height - query_height - player_pos_y);
 
             // Render Renderer
             SDL_RenderPresent(renderer);
 
             // Sleep
-            SDL_Delay(10);
+            //SDL_Delay(4);
         }
 
         // Clean and Exit
-        cleanup(background);
+        //cleanup(background);
         cleanup(image);
         cleanup(renderer, window);
         SDL_Quit();

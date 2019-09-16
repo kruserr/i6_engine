@@ -4,6 +4,7 @@
 #include "components/core.cpp"
 #include "components/texture.cpp"
 #include "components/game.cpp"
+#include "components/player.cpp"
 
 namespace i6
 {

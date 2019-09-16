@@ -8,6 +8,11 @@ namespace i6
     private:
         const int screen_width  = 1280;
         const int screen_height = 720;
+
+        int player_pos_x = 0;
+        int player_pos_y = 0;
+        int player_width = 0;
+        int player_height = 0;
         
     public:
         Engine();
@@ -28,6 +33,11 @@ namespace i6
         // components/texture.cpp
         SDL_Texture* load_texture(const std::string &file, SDL_Renderer *ren);
         void render_texture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y);
+
+        // components/player.cpp
+        void set_player(int pos_x, int pos_y);
+        int get_player_x(int query_width);
+        int get_player_y(int query_height);
 
         // components/game.cpp
         int game_loop();
