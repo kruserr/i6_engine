@@ -40,7 +40,7 @@ namespace i6
         return texture;
     }
 
-    void Engine::render_texture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y)
+    void Engine::render_texture(SDL_Texture *texture, SDL_Renderer *renderer, double x, double y)
     {
         //Setup the destination rectangle to be at the position we want
         SDL_Rect dst;

@@ -6,13 +6,13 @@ namespace i6
     class Engine
     {
     private:
-        const int screen_width  = 1280;
-        const int screen_height = 720;
+        const double screen_width  = 1280;
+        const double screen_height = 720;
 
-        int player_pos_x = 0;
-        int player_pos_y = 0;
-        int player_width = 0;
-        int player_height = 0;
+        double player_pos_x = 0;
+        double player_pos_y = 0;
+        double player_width = 0;
+        double player_height = 0;
         double player_speed = 1;
         
     public:
@@ -33,22 +33,22 @@ namespace i6
 
         // components/texture.cpp
         SDL_Texture* load_texture(const std::string &file, SDL_Renderer *ren);
-        void render_texture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y);
+        void render_texture(SDL_Texture *tex, SDL_Renderer *ren, double x, double y);
 
         // components/player.cpp
-        void set_player_x(int pos_x);
-        void set_player_y(int pos_y);
-        void set_player_width(int width);
-        void set_player_height(int height);
-        void set_player_speed(int speed);
-        int get_player_x();
-        int get_player_y();
-        int compute_player_x();
-        int compute_player_y(int query_height);
+        void set_player_x(double pos_x);
+        void set_player_y(double pos_y);
+        void set_player_width(double width);
+        void set_player_height(double height);
+        void set_player_speed(double speed);
+        double get_player_x();
+        double get_player_y();
+        double compute_player_x();
+        double compute_player_y(double query_height);
         bool move_player(SDL_Event event);
 
         // components/game.cpp
-        int game_loop();
+        double game_loop();
     };
 }
 

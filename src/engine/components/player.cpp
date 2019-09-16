@@ -2,49 +2,49 @@
 
 namespace i6
 {
-    void Engine::set_player_x(int pos_x)
+    void Engine::set_player_x(double pos_x)
     {
         if (pos_x > 0 && pos_x < screen_width - player_width)
             player_pos_x = pos_x;
     }
 
-    void Engine::set_player_y(int pos_y)
+    void Engine::set_player_y(double pos_y)
     {
         if (pos_y > 0 && pos_y < screen_height - player_height)
             player_pos_y = pos_y;
     }
 
-    void Engine::set_player_width(int width)
+    void Engine::set_player_width(double width)
     {
         player_width = width;
     }
 
-    void Engine::set_player_height(int height)
+    void Engine::set_player_height(double height)
     {
         player_height = height;
     }
 
-    void Engine::set_player_speed(int speed)
+    void Engine::set_player_speed(double speed)
     {
         player_speed = speed;
     }
 
-    int Engine::get_player_x()
+    double Engine::get_player_x()
     {
         return player_pos_x;
     }
 
-    int Engine::get_player_y()
+    double Engine::get_player_y()
     {
         return player_pos_y;
     }
 
-    int Engine::compute_player_x()
+    double Engine::compute_player_x()
     {
         return player_pos_x;
     }
 
-    int Engine::compute_player_y(int query_height)
+    double Engine::compute_player_y(double query_height)
     {
         return screen_height - query_height - player_pos_y;
     }
@@ -55,12 +55,12 @@ namespace i6
 
         bool quit = false;
 
-        int cpus = proc.validate_threads();
+        double cpus = proc.validate_threads();
 
         std::vector<std::thread> threads(cpus);
         std::mutex iomutex;
 
-        for (int i = 0; i < cpus; i++)
+        for (double i = 0; i < cpus; i++)
         {
             threads[i] = std::thread( [&]
             {

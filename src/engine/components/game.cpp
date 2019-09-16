@@ -2,7 +2,7 @@
 
 namespace i6
 {
-    int Engine::game_loop()
+    double Engine::game_loop()
     {
         bool quit = false;
         int query_width = 0;
@@ -46,7 +46,7 @@ namespace i6
         set_player_width(query_width);
         set_player_height(query_height);
 
-        set_player_speed(2);
+        set_player_speed(0.033);
 
         // Game Loop
         while (!quit)
@@ -54,7 +54,7 @@ namespace i6
             SDL_Event event;
 
             // Poll event
-            SDL_Delay(1000 / 240);
+            //SDL_Delay(1000 / 240);
             SDL_PollEvent(&event);
 
             // Move Player
