@@ -46,7 +46,8 @@ namespace i6
         set_player_width(query_width);
         set_player_height(query_height);
 
-        set_player_speed(0.033);
+        //set_player_speed(0.033); // Desktop
+        set_player_speed(0.5); // Laptop
 
         // Game Loop
         while (!quit)
