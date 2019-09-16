@@ -4,6 +4,9 @@ namespace i6
 {
     int Engine::game_loop()
     {
+        SDL_Event event;
+        
+        bool quit = false;
         int query_width = 0;
         int query_height = 0;
 
@@ -16,7 +19,7 @@ namespace i6
         }
 
         // Init Window
-        SDL_Window *window = SDL_CreateWindow("i6_engine", 100, 100, screen_width, screen_height, SDL_WINDOW_SHOWN);
+        SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
         if (window == nullptr)
         {
             error_log(std::cout, "CreateWindow");
@@ -26,7 +29,9 @@ namespace i6
         }
 
         // Init Renderer
-        SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+        //SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+        //SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+        SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
         if (renderer == nullptr)
         {
             error_log(std::cout, "CreateRenderer");
@@ -37,45 +42,31 @@ namespace i6
         }
 
         // Load Textures
-        //SDL_Texture *background = load_texture("background.bmp", renderer);
-        //SDL_Texture *image = load_texture("image.bmp", renderer);
         SDL_Texture *image = load_texture("/stick_figure/stick_figure.bmp", renderer);
         SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
 
         // Game Loop
-        for (int i = 0; i < screen_width - query_width; i++)
+        while (!quit)
         {
+            // Poll event
+            SDL_Delay(4);
+            SDL_PollEvent(&event);
+
+            // Move Player
+            quit = move_player(event);
+
             // Clear Renderer
             SDL_RenderClear(renderer);
 
-            // Render Background
-            /* SDL_QueryTexture(background, NULL, NULL, &query_width, &query_height);
-            for (int width = query_width; width <= screen_width; width += query_width)
-                for (int height = query_height; height <= screen_height; height += query_height)
-                    render_texture(background, renderer, screen_width - width, screen_height - height); */
-
-            if (i < 101)
-                set_player(i, 0);
-            else if (i > ((screen_width / 2) - query_width) && i < (((screen_width / 2) + 101) - query_width))
-                set_player(i, player_pos_y + 2);
-            else if (i > (((screen_width / 2) + 100) - query_width) && i < (((screen_width / 2) + 201) - query_width))
-                set_player(i, player_pos_y - 2);
-            else
-                set_player(i, player_pos_y);
-            
             // Render Image
             SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
-            render_texture(image, renderer, get_player_x(), get_player_y(query_height));
+            render_texture(image, renderer, compute_player_x(), compute_player_y(query_height));
 
             // Render Renderer
             SDL_RenderPresent(renderer);
-
-            // Sleep
-            //SDL_Delay(4);
         }
 
         // Clean and Exit
-        //cleanup(background);
         cleanup(image);
         cleanup(renderer, window);
         SDL_Quit();

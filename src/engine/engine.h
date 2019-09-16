@@ -35,9 +35,13 @@ namespace i6
         void render_texture(SDL_Texture *tex, SDL_Renderer *ren, int x, int y);
 
         // components/player.cpp
-        void set_player(int pos_x, int pos_y);
+        void set_player_x(int pos_x);
+        void set_player_y(int pos_y);
         int get_player_x();
-        int get_player_y(int query_height);
+        int get_player_y();
+        int compute_player_x();
+        int compute_player_y(int query_height);
+        bool move_player(SDL_Event event);
 
         // components/game.cpp
         int game_loop();
