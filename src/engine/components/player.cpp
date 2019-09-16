@@ -8,9 +8,9 @@ namespace i6
         player_pos_y = pos_y;
     }
 
-    int Engine::get_player_x(int query_width)
+    int Engine::get_player_x()
     {
-        return query_width + player_pos_x;
+        return player_pos_x;
     }
 
     int Engine::get_player_y(int query_height)

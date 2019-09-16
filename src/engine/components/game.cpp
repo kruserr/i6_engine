@@ -65,7 +65,7 @@ namespace i6
             
             // Render Image
             SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
-            render_texture(image, renderer, player_pos_x, screen_height - query_height - player_pos_y);
+            render_texture(image, renderer, get_player_x(), get_player_y(query_height));
 
             // Render Renderer
             SDL_RenderPresent(renderer);

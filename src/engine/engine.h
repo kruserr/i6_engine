@@ -36,7 +36,7 @@ namespace i6
 
         // components/player.cpp
         void set_player(int pos_x, int pos_y);
-        int get_player_x(int query_width);
+        int get_player_x();
         int get_player_y(int query_height);
 
         // components/game.cpp
