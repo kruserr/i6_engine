@@ -37,6 +37,8 @@ namespace i6
         // components/player.cpp
         void set_player_x(int pos_x);
         void set_player_y(int pos_y);
+        void set_player_width(int width);
+        void set_player_height(int height);
         int get_player_x();
         int get_player_y();
         int compute_player_x();

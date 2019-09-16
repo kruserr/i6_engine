@@ -4,12 +4,24 @@ namespace i6
 {
     void Engine::set_player_x(int pos_x)
     {
-        player_pos_x = pos_x;
+        if (pos_x > 0 && pos_x < screen_width - player_width)
+            player_pos_x = pos_x;
     }
 
     void Engine::set_player_y(int pos_y)
     {
-        player_pos_y = pos_y;
+        if (pos_y > 0 && pos_y < screen_height - player_height)
+            player_pos_y = pos_y;
+    }
+
+    void Engine::set_player_width(int width)
+    {
+        player_width = width;
+    }
+
+    void Engine::set_player_height(int height)
+    {
+        player_height = height;
     }
 
     int Engine::get_player_x()

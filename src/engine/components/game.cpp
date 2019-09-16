@@ -4,8 +4,6 @@ namespace i6
 {
     int Engine::game_loop()
     {
-        SDL_Event event;
-        
         bool quit = false;
         int query_width = 0;
         int query_height = 0;
@@ -19,7 +17,8 @@ namespace i6
         }
 
         // Init Window
-        SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
+        //SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
+        SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, SDL_WINDOW_SHOWN);
         if (window == nullptr)
         {
             error_log(std::cout, "CreateWindow");
@@ -44,12 +43,16 @@ namespace i6
         // Load Textures
         SDL_Texture *image = load_texture("/stick_figure/stick_figure.bmp", renderer);
         SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
+        set_player_width(query_width);
+        set_player_height(query_height);
 
         // Game Loop
         while (!quit)
         {
+            SDL_Event event;
+
             // Poll event
-            SDL_Delay(4);
+            SDL_Delay(1000 / 240);
             SDL_PollEvent(&event);
 
             // Move Player
