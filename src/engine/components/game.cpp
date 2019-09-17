@@ -1,5 +1,3 @@
-#include "../../pch.h"
-
 namespace i6
 {
     double Engine::game_loop()

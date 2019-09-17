@@ -1,5 +1,3 @@
-#include "../../pch.h"
-
 namespace i6
 {
     void Engine::set_player_x(double pos_x)

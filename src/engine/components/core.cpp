@@ -1,5 +1,3 @@
-#include "../../pch.h"
-
 namespace i6
 {
     bool Engine::is_prime(unsigned long long x)

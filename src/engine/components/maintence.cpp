@@ -1,5 +1,3 @@
-#include "../../pch.h"
-
 namespace i6
 {
     // Template function for cleanup

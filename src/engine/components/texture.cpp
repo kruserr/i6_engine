@@ -1,5 +1,3 @@
-#include "../../pch.h"
-
 namespace i6
 {
     SDL_Texture* Engine::load_texture(const std::string &file, SDL_Renderer *renderer)
