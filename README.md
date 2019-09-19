@@ -6,29 +6,8 @@ Straight-Six Engine
 
 # Deps
 
-```
-sudo dnf install glew-devel SDL2-devel SDL2_image-devel glm-devel freetype-devel
-```
+### WINDOWS
 
-<br>
-
-# Install
-
-```
-git clone https://github.com/kruserr/i6_engine.git
-cd i6_engine
-./run.sh
-
-```
-
-<br>
-
-# ref
-
-https://www.willusher.io/sdl2%20tutorials/2013/08/18/lesson-3-sdl-extension-libraries
-
-
-# WINDOWS CONFIGURATION OF SDL2.
 ```
 Step 1:
 Download and install vcpkg in root folder of windows. by using git bash, and powershell.
@@ -50,8 +29,24 @@ Step 5:
 Before the int main{}
 add:
 #undef main	// Have to undefine main, because main is already defined in another place.
+```
 
+<br>
 
+### Linux
 
 ```
+sudo dnf install glew-devel SDL2-devel SDL2_image-devel glm-devel freetype-devel
+```
+
 <br>
+
+# Install
+
+### Linux
+```
+git clone https://github.com/kruserr/i6_engine.git
+cd i6_engine
+./run.sh
+
+```
