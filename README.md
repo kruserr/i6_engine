@@ -30,7 +30,7 @@ sudo dnf install @development-tools glm-devel cmake libpng-devel wayland-devel \
 libpciaccess-devel libX11-devel libXpresent libxcb xcb-util libxcb-devel libXrandr-devel \
 xcb-util-keysyms-devel xcb-util-wm-devel python git qt qt5-qtwebengine-devel
 
-groupinstall "X Software Development"
+sudo dnf groupinstall "X Software Development"
 ```
 
 <br>
