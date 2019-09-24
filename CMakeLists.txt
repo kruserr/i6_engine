@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7)
 project(i6_engine)
 
-# Include Compiler Flag Checker
-include(CheckCXXCompilerFlag)
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}" ${CMAKE_MODULE_PATH})
 
-# if supported -std=c++11 else CMAKE_CXX_STANDARD 11
+# Enable C++11
+include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 if(COMPILER_SUPPORTS_CXX11)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -14,7 +14,7 @@ else()
     message(STATUS "CMAKE_CXX_STANDARD 11 enabled ( if it crashes your compiler ${CMAKE_CXX_COMPILER} is not supported )")
 endif()
 
-# Function to Only Enable Compiler Flag if Supported
+# Only Enable Supported Compiler Flags
 function(enable_cxx_compiler_flag_if_supported flag)
     string(FIND "${CMAKE_CXX_FLAGS}" "${flag}" flag_already_set)
     if(flag_already_set EQUAL -1)
@@ -46,22 +46,55 @@ enable_cxx_compiler_flag_if_supported("-Ofast")
 enable_cxx_compiler_flag_if_supported("/W4")
 enable_cxx_compiler_flag_if_supported("/O2")
 
-# OpenGL Commands
+# GLib Commands
 #enable_cxx_compiler_flag_if_supported("-lSDL2main")
-enable_cxx_compiler_flag_if_supported("-lSDL2")
+#enable_cxx_compiler_flag_if_supported("-lSDL2")
+#enable_cxx_compiler_flag_if_supported("-lvulkan")
+#enable_cxx_compiler_flag_if_supported("-lglfw3")
 
+# Find Commands
+#find_package(Vulkan REQUIRED)
+#find_package(glfw3 REQUIRED)
 
-# Default to Build Type Release else use User Setting
+# Set Default Build to Release
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Select Type of Build: Debug, Release, RelWithDebInfo, MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
-# Location of .cpp src Directories
-file(GLOB dir_src "${PROJECT_SOURCE_DIR}/src/*.cpp")
-file(GLOB dir_src_engine "${PROJECT_SOURCE_DIR}/src/engine/*.cpp")
-file(GLOB dir_src_timer "${PROJECT_SOURCE_DIR}/src/etc/timer/*.cpp")
-file(GLOB dir_src_render "${PROJECT_SOURCE_DIR}/src/etc/render/*.cpp")
-file(GLOB dir_src_proc "${PROJECT_SOURCE_DIR}/src/etc/proc/*.cpp")
+# Link to GLFW and Vlukan
+add_subdirectory(${PROJECT_SOURCE_DIR}/glfw)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/1.1.121.1)
 
-# Make exec from .cpp src Directories
-add_executable(i6_engine ${dir_src} ${dir_src_engine} ${dir_src_timer} ${dir_src_render} ${dir_src_proc})
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/glslang)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/Vulkan-Headers)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/Vulkan-Loader)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/Vulkan-ValidationLayers)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/VulkanTools)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/VulkanSamples)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/shaderc)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/SPIRV-Cross)
+#add_subdirectory(${PROJECT_SOURCE_DIR}/vulkan/Vulkan-Tools)
+
+# src Files
+file(GLOB dir_src "${PROJECT_SOURCE_DIR}/src/*.cpp")
+#file(GLOB dir_src_timer "${PROJECT_SOURCE_DIR}/src/etc/timer/*.cpp")
+
+# exec
+add_executable(${PROJECT_NAME} ${dir_src})
+
+# link
+target_link_libraries(${PROJECT_NAME} glfw)
+#target_link_libraries(i6_engine Vulkan::Vulkan)
+
+#target_link_libraries(${PROJECT_NAME}/vulkan/Vulkan-Loader)
+#target_link_libraries(${PROJECT_NAME}/vulkan/Vulkan-ValidationLayers)
+#target_link_libraries(${PROJECT_NAME}/vulkan/VulkanTools)
+#target_link_libraries(${PROJECT_NAME}/vulkan/VulkanSamples)
+#target_link_libraries(${PROJECT_NAME}/vulkan/glslang)
+#target_link_libraries(${PROJECT_NAME}/vulkan/shaderc)
+#target_link_libraries(${PROJECT_NAME}/vulkan/SPIRV-Cross)
+#target_link_libraries(${PROJECT_NAME}/vulkan/Vulkan-Headers)
+#target_link_libraries(${PROJECT_NAME}/vulkan/Vulkan-Tools)
+
+# Copy assets folder to build
+#add_custom_command(TARGET i6_engine PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/src/inc/assets $<TARGET_FILE_DIR:i6_engine>/inc/assets/)

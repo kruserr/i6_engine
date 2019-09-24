@@ -1,10 +1,64 @@
-#include "pch.h"
+//#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+
+#include <iostream>
+#include <string>
+#include <vector>
 
 int main()
 {
-    #ifndef NDEBUG
-    i6::Timer timer;
-    #endif
+    std::string project_name = "i6_engine";
+    int screen_width = 1280;
+    int screen_height = 720;
+    int opengl_version_major = 3; // 4
+    int opengl_version_minor = 0; // 1
 
-    i6::Engine engine;
+    //Init GLFW
+    if(!glfwInit())
+    {
+        std::cout << "ERROR"  << std::endl; 
+        return(-1);
+    }
+
+    // GLFW Hints
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_VISIBLE, GL_TRUE);
+    glfwWindowHint(GLFW_DECORATED, GL_TRUE);
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, opengl_version_major);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, opengl_version_minor);
+
+    // Old GLFW Hints
+    //glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+
+    GLFWwindow* window = glfwCreateWindow(screen_width, screen_height, project_name.c_str(), nullptr, nullptr);
+    if(window == nullptr)
+    {
+        std::cout << "ERROR"  << std::endl;
+        glfwTerminate();
+        return(-1);
+    }
+
+    uint32_t extensionCount = 0;
+    //vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
+
+    std::cout << extensionCount << " extensions supported" << std::endl;
+
+    glm::mat4 matrix;
+    glm::vec4 vec;
+    auto test = matrix * vec;
+
+    while(!glfwWindowShouldClose(window))
+        glfwPollEvents();
+
+    glfwDestroyWindow(window);
+
+    glfwTerminate();
+
+    return 0;
 }

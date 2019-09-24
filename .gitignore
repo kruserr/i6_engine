@@ -9,7 +9,7 @@ Build/*
 build/*
 bin/*
 bin-int/*
-vendor/SDL2-2.0.10/build/*
+glfw/build/*
 
 # Temp files
 CMakeCXXCompilerId.gcno
