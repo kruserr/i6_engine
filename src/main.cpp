@@ -36,7 +36,13 @@ int main()
     // Old GLFW Hints
     //glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
-    GLFWwindow* window = glfwCreateWindow(screen_width, screen_height, project_name.c_str(), nullptr, nullptr);
+    // Set Screen width and height
+    GLFWmonitor* primary = glfwGetPrimaryMonitor();
+    glfwGetMonitorWorkarea(primary, nullptr, nullptr, &screen_width, &screen_height);
+    std::cout << screen_height << '\n' << screen_width << '\n';
+
+    GLFWwindow* window = glfwCreateWindow(screen_width, screen_height, project_name.c_str(), nullptr, nullptr); // windowed
+    //GLFWwindow* window = glfwCreateWindow(screen_width, screen_height, project_name.c_str(), primary, nullptr); // fullscreen
     if(window == nullptr)
     {
         std::cout << "ERROR"  << std::endl;
@@ -53,8 +59,19 @@ int main()
     glm::vec4 vec;
     auto test = matrix * vec;
 
+    glfwMakeContextCurrent(window);
+
+    // Game Loop
     while(!glfwWindowShouldClose(window))
+    {
         glfwPollEvents();
+
+        glfwGetKey(window, GLFW_KEY_W);
+        glfwGetKey(window, GLFW_KEY_A);
+        glfwGetKey(window, GLFW_KEY_S);
+        glfwGetKey(window, GLFW_KEY_D);
+    }
+
 
     glfwDestroyWindow(window);
 
