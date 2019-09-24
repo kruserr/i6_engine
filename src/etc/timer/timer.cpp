@@ -1,7 +1,5 @@
 #include "../../pch.h"
 
-namespace i6
-{    
         Timer::Timer()
         {
             start = std::chrono::high_resolution_clock::now();
@@ -16,4 +14,4 @@ namespace i6
 
             std::cout << "\nTimer took: " << ms << " ms\n\n";
         }
-}
+

@@ -1,8 +1,6 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-namespace i6
-{
     // Timer Function
     struct Timer
     {
@@ -23,6 +21,5 @@ namespace i6
         Timer();
         ~Timer();
     };
-}
 
 #endif

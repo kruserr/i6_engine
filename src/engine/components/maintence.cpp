@@ -1,7 +1,7 @@
-namespace i6
-{
+#include "../../pch.h"
+
     // Template function for cleanup
-    template<typename T, typename... Args> void Engine::cleanup(T *t, Args&&... args)
+    template<typename T, typename... Args> void cleanup(T* t, Args&& ... args)
     {
         //Cleanup the first item in the list
         cleanup(t);
@@ -10,7 +10,7 @@ namespace i6
         cleanup(std::forward<Args>(args)...);
     }
 
-    template<> inline void Engine::cleanup<SDL_Window>(SDL_Window *win)
+    template<> inline void cleanup<SDL_Window>(SDL_Window* win)
     {
         if (!win)
         {
@@ -20,7 +20,7 @@ namespace i6
         SDL_DestroyWindow(win);
     }
 
-    template<> inline void Engine::cleanup<SDL_Renderer>(SDL_Renderer *ren)
+    template<> inline void cleanup<SDL_Renderer>(SDL_Renderer* ren)
     {
         if (!ren)
         {
@@ -30,7 +30,7 @@ namespace i6
         SDL_DestroyRenderer(ren);
     }
 
-    template<> inline void Engine::cleanup<SDL_Texture>(SDL_Texture *texture)
+    template<> inline void cleanup<SDL_Texture>(SDL_Texture* texture)
     {
         if (!texture)
         {
@@ -40,7 +40,7 @@ namespace i6
         SDL_DestroyTexture(texture);
     }
 
-    template<> inline void Engine::cleanup<SDL_Surface>(SDL_Surface *surf)
+    template<> inline void cleanup<SDL_Surface>(SDL_Surface* surf)
     {
         if (!surf)
         {
@@ -49,4 +49,3 @@ namespace i6
 
         SDL_FreeSurface(surf);
     }
-}

@@ -1,10 +1,12 @@
 #include "pch.h"
 
-int main()
+int main(int argc, char *argv[])
 {
     #ifndef NDEBUG
-    i6::Timer timer;
+    Timer timer;
     #endif
 
-    i6::Engine engine;
+    Engine engine;
+
+	return 0;
 }

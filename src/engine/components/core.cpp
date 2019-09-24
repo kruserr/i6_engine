@@ -1,5 +1,5 @@
-namespace i6
-{
+#include "../../pch.h"
+
     bool Engine::is_prime(unsigned long long x)
     {
         if (x < 2)
@@ -95,4 +95,3 @@ namespace i6
                 return i;
         return 0;
     }
-}

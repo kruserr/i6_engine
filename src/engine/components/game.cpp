@@ -1,15 +1,19 @@
-namespace i6
-{
+#include "../../pch.h"
+#include "maintence.cpp"
+#include "debug.cpp"
+#include "game/gamelogic.h"
+
+
     double Engine::game_loop()
     {
+
+        // Scoped Variables
         bool quit = false;
-        int query_width = 0;
-        int query_height = 0;
 
         // Init
         if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
         {
-            error_log(std::cout, "SDL_Init");
+            //error_log(std::cout, "SDL_Init");
             
             return 1;
         }
@@ -19,7 +23,7 @@ namespace i6
         SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, SDL_WINDOW_SHOWN);
         if (window == nullptr)
         {
-            error_log(std::cout, "CreateWindow");
+            //error_log(std::cout, "CreateWindow");
             SDL_Quit();
 
             return 1;
@@ -31,50 +35,46 @@ namespace i6
         SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
         if (renderer == nullptr)
         {
-            error_log(std::cout, "CreateRenderer");
+            //error_log(std::cout, "CreateRenderer");
             cleanup(window);
             SDL_Quit();
 
             return 1;
         }
 
-        // Load Textures
-        SDL_Texture *image = load_texture("/stick_figure/stick_figure.bmp", renderer);
-        SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
-        set_player_width(query_width);
-        set_player_height(query_height);
-
-        //set_player_speed(0.033); // Desktop
-        set_player_speed(0.5); // Laptop
+		//INIT GAMELOGIC
+		GameLogic gamelogic(renderer);
+		gamelogic.initilize();
 
         // Game Loop
         while (!quit)
         {
+            // Animation Sync
+            gamelogic.set_sync_start();
+
+			// Event
             SDL_Event event;
-
-            // Poll event
-            //SDL_Delay(1000 / 240);
             SDL_PollEvent(&event);
-
-            // Move Player
-            quit = move_player(event);
 
             // Clear Renderer
             SDL_RenderClear(renderer);
 
-            // Render Image
-            SDL_QueryTexture(image, NULL, NULL, &query_width, &query_height);
-            render_texture(image, renderer, compute_player_x(), compute_player_y(query_height));
+            // Game Logic
+			gamelogic.loop(&event);
 
-            // Render Renderer
+			// Check if loop shall end
+			if (event.type == SDL_QUIT)
+				quit = true;
+
             SDL_RenderPresent(renderer);
+
+            // Animation Sync
+            gamelogic.set_sync_end();
         }
 
         // Clean and Exit
-        cleanup(image);
         cleanup(renderer, window);
         SDL_Quit();
 
         return 0;
     }
-}

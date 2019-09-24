@@ -14,14 +14,12 @@
 
 // Custom Libs
 #include "etc/timer/timer.h"        // Timer Function
-#include "etc/render/render.h"      // Rendering Functions
 #include "etc/proc/proc.h"          // Data Processing Functions
 
-// Etc
-#include "SDL2/SDL.h"
+// SDL
+#include <SDL2/SDL.h>
 
 // Engine Classes
 #include "engine/engine.h"
-
 
 #endif
