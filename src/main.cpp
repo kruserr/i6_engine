@@ -70,6 +70,10 @@ int main()
         glfwGetKey(window, GLFW_KEY_A);
         glfwGetKey(window, GLFW_KEY_S);
         glfwGetKey(window, GLFW_KEY_D);
+
+        //glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window);
     }
 
 
