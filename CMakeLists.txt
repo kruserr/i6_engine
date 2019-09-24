@@ -55,6 +55,7 @@ enable_cxx_compiler_flag_if_supported("/O2")
 # Find Commands
 #find_package(Vulkan REQUIRED)
 #find_package(glfw3 REQUIRED)
+find_package(OpenGL REQUIRED)
 
 # Set Default Build to Release
 if(NOT CMAKE_BUILD_TYPE)
@@ -63,6 +64,7 @@ endif(NOT CMAKE_BUILD_TYPE)
 
 # Link to GLFW and Vlukan
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/glfw)
+add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/glad)
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/glm)
 #add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/1.1.121.1)
 
@@ -85,6 +87,9 @@ add_executable(${PROJECT_NAME} ${dir_src})
 
 # link
 target_link_libraries(${PROJECT_NAME} glfw)
+target_link_libraries(${PROJECT_NAME} glad)
+target_link_libraries(${PROJECT_NAME} OpenGL)
+#target_link_libraries(${PROJECT_NAME} ${OPENGL_gl_LIBRARY})
 target_link_libraries(${PROJECT_NAME} glm_static)
 #target_link_libraries(i6_engine Vulkan::Vulkan)
 
