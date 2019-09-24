@@ -1,36 +1,47 @@
 [submodule "CMake"]
 	path = CMake
 	url = https://github.com/Kitware/CMake
+
 [submodule "vendor/glfw"]
 	path = vendor/glfw
 	url = https://github.com/glfw/glfw
+
 [submodule "vendor/glm"]
 	path = vendor/glm
 	url = https://github.com/g-truc/glm
+
 [submodule "vendor/vulkan/glslang"]
 	path = vendor/vulkan/glslang
 	url = https://github.com/KhronosGroup/glslang
+
 [submodule "vendor/vulkan/SPIRV-Cross"]
 	path = vendor/vulkan/SPIRV-Cross
 	url = https://github.com/KhronosGroup/SPIRV-Cross
+
 [submodule "vendor/vulkan/Vulkan-Headers"]
 	path = vendor/vulkan/Vulkan-Headers
 	url = https://github.com/KhronosGroup/Vulkan-Headers
+
 [submodule "vendor/vulkan/Vulkan-Loader"]
 	path = vendor/vulkan/Vulkan-Loader
 	url = https://github.com/KhronosGroup/Vulkan-Loader
+
 [submodule "vendor/vulkan/Vulkan-Tools"]
 	path = vendor/vulkan/Vulkan-Tools
 	url = https://github.com/KhronosGroup/Vulkan-Tools
+
 [submodule "vendor/vulkan/shaderc"]
 	path = vendor/vulkan/shaderc
 	url = https://github.com/google/shaderc
+
 [submodule "vendor/vulkan/VulkanTools"]
 	path = vendor/vulkan/VulkanTools
 	url = https://github.com/LunarG/VulkanTools
+
 [submodule "vendor/vulkan/VulkanSamples"]
 	path = vendor/vulkan/VulkanSamples
 	url = https://github.com/LunarG/VulkanSamples
+    
 [submodule "vendor/vulkan/Vulkan-ValidationLayers"]
 	path = vendor/vulkan/Vulkan-ValidationLayers
 	url = https://github.com/KhronosGroup/Vulkan-ValidationLayers
