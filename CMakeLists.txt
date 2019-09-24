@@ -48,7 +48,7 @@ enable_cxx_compiler_flag_if_supported("/O2")
 
 # OpenGL Commands
 #enable_cxx_compiler_flag_if_supported("-lSDL2main")
-enable_cxx_compiler_flag_if_supported("-lSDL2")
+#enable_cxx_compiler_flag_if_supported("-lSDL2")
 
 
 # Default to Build Type Release else use User Setting
