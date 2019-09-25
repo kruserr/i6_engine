@@ -69,11 +69,15 @@ file(GLOB dir_src_engine_components_game "${PROJECT_SOURCE_DIR}/src/engine/compo
 file(GLOB dir_src_engine_components_game_gameobjects "${PROJECT_SOURCE_DIR}/src/engine/components/game/gameobjects/*.cpp")
 
 # exec
-#add_executable(${PROJECT_NAME} ${dir_src} ${dir_src_engine} ${dir_src_timer} ${dir_src_render} ${dir_src_proc})
 add_executable(i6_engine ${dir_src} ${dir_src_timer} ${dir_src_render} ${dir_src_proc} ${dir_src_engine} ${dir_src_engine_components} ${dir_src_engine_components_game} ${dir_src_engine_components_game_gameobjects})
 
 # link
-target_link_libraries(${PROJECT_NAME} SDL2)
+if(UNIX)
+    target_link_libraries(${PROJECT_NAME} SDL2)
+elseif(WIN32)
+    target_link_libraries(${PROJECT_NAME} SDL2-static)
+    target_link_libraries(${PROJECT_NAME} SDL2main)
+endif()
 
 # Copy assets folder to build
 add_custom_command(TARGET i6_engine PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/src/inc/assets $<TARGET_FILE_DIR:i6_engine>/inc/assets/)
