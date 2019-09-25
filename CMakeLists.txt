@@ -34,23 +34,23 @@ endfunction()
 enable_cxx_compiler_flag_if_supported("-Wall")
 enable_cxx_compiler_flag_if_supported("-Wextra")
 enable_cxx_compiler_flag_if_supported("-O3")
-enable_cxx_compiler_flag_if_supported("-pthread")
-#enable_cxx_compiler_flag_if_supported("--coverage")
-#enable_cxx_compiler_flag_if_supported("-fprofile-arcs")
-#enable_cxx_compiler_flag_if_supported("-ftest-coverage")
+if(UNIX)
+    enable_cxx_compiler_flag_if_supported("-pthread")
+endif()
 
 # Clang Commands
-enable_cxx_compiler_flag_if_supported("-Weverything")
-enable_cxx_compiler_flag_if_supported("-Ofast")
+if(UNIX)
+    enable_cxx_compiler_flag_if_supported("-Weverything")
+    enable_cxx_compiler_flag_if_supported("-Ofast")
+endif()
 
 # MSVC Commands
-enable_cxx_compiler_flag_if_supported("/W4")
-enable_cxx_compiler_flag_if_supported("/O2")
+if(WIN32)
+    enable_cxx_compiler_flag_if_supported("/W4")
+    enable_cxx_compiler_flag_if_supported("/O2")
+endif()
 
 # Include SDL2
-#enable_cxx_compiler_flag_if_supported("-lSDL2main")
-#enable_cxx_compiler_flag_if_supported("-lSDL2")
-#find_package(SDL2 REQUIRED)
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/SDL2)
 
 # Set Default Build to Release
@@ -72,12 +72,13 @@ file(GLOB dir_src_engine_components_game_gameobjects "${PROJECT_SOURCE_DIR}/src/
 add_executable(i6_engine ${dir_src} ${dir_src_timer} ${dir_src_render} ${dir_src_proc} ${dir_src_engine} ${dir_src_engine_components} ${dir_src_engine_components_game} ${dir_src_engine_components_game_gameobjects})
 
 # link
-if(UNIX)
-    target_link_libraries(${PROJECT_NAME} SDL2)
-elseif(WIN32)
-    target_link_libraries(${PROJECT_NAME} SDL2-static)
-    target_link_libraries(${PROJECT_NAME} SDL2main)
-endif()
+target_link_libraries(${PROJECT_NAME} SDL2-static)
+
+#if(UNIX)
+    #target_link_libraries(${PROJECT_NAME} SDL2)
+#elseif(WIN32)
+    #target_link_libraries(${PROJECT_NAME} SDL2-static)
+#endif()
 
 # Copy assets folder to build
 add_custom_command(TARGET i6_engine PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/src/inc/assets $<TARGET_FILE_DIR:i6_engine>/inc/assets/)

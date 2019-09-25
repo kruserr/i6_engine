@@ -24,10 +24,10 @@ extern double delta_camera_pos_y;
         ~Engine();
 
         // components/core.cpp
-        bool is_prime(unsigned long long x);
+        /* bool is_prime(unsigned long long x);
         unsigned long long next_prime(unsigned long long x);
         bool is_prime_threaded(unsigned long long x);
-        unsigned long long next_prime_threaded(unsigned long long x);
+        unsigned long long next_prime_threaded(unsigned long long x); */
 
         // components/game.cpp
         double game_loop();

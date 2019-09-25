@@ -5,16 +5,16 @@
 #include <iostream>                 // IO
 #include <chrono>                   // Timer
 #include <iomanip>                  // IO Spacing
-#include <random>                   // Random Number Generator
+//#include <random>                   // Random Number Generator
 #include <string>                   // Char Container
 #include <vector>                   // Array Container
 #include <assert.h>                 // Testing
-#include <thread>                   // Threading
-#include <mutex>                    // Mutex locking
+//#include <thread>                   // Threading
+//#include <mutex>                    // Mutex locking
 
 // Custom Libs
 #include "etc/timer/timer.h"        // Timer Function
-#include "etc/proc/proc.h"          // Data Processing Functions
+//#include "etc/proc/proc.h"          // Data Processing Functions
 
 // SDL
 #include <SDL2/SDL.h>
