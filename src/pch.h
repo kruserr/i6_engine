@@ -17,7 +17,8 @@
 //#include "etc/proc/proc.h"          // Data Processing Functions
 
 // SDL
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL.h>
+#include <SDL.h>
 
 // Engine Classes
 #include "engine/engine.h"
