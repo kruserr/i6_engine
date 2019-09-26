@@ -79,17 +79,3 @@ void Texture::render_texture_ext(SDL_Texture* texture, SDL_Renderer* renderer, d
 	dst.h = aHeight;
 	SDL_RenderCopyEx(renderer, texture, NULL, &dst, aAngle, NULL, fliptype);
 }
-
-void Texture::render_queue_push(SDL_Texture* aTex, SDL_Renderer* aRen, double aX, double aY, double aAngle)
-{
-	auto list = get_render_queue();
-
-	RenderObject r;
-	r.tex = aTex;
-	r.ren = aRen;
-	r.x = aX;
-	r.y = aY;
-	r.angle = aAngle;
-
-	list.push_back(r);
-}

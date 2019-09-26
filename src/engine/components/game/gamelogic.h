@@ -40,6 +40,7 @@ public:
     void init_wall(int aSize);
     void set_wall(int aIndex, double aPos_x, double aPos_y);
     void generate_wall();
+    void r_loop();
 };
 
 #endif

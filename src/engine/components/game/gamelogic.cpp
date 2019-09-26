@@ -141,3 +141,9 @@ void GameLogic::generate_wall()
 {
     // test2
 }
+
+void GameLogic::r_loop()
+{
+    player->render_loop();
+    wall[0].render_loop();
+}

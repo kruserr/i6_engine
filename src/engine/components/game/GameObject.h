@@ -27,6 +27,8 @@ public:
 	GameObject();
 	~GameObject();
 
+	std::list<RenderObject> render_queue;
+
 	void init();
 	void refresh();
 
@@ -60,6 +62,10 @@ public:
 	void auto_place_texture(bool aChoice);
 	void set_solid(bool aChoice);
 	bool collides_with(GameObject *other);
+	void set_render_queue(const std::list<RenderObject> &aI) { render_queue = aI; }
+	const std::list<RenderObject>& get_render_queue() const { return render_queue; }
+	void render_queue_push(SDL_Texture* aTex, SDL_Renderer* aRen, double aX, double aY, double aAngle);
+	void render_loop();
 };
 
 #endif // !GAMEOBJECT_H

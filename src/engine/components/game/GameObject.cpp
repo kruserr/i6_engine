@@ -43,10 +43,11 @@ void GameObject::refresh()
 {
 	xPrevious = x;
 	yPrevious = y;
-	
 
 	// Render Image
-	render_texture(image, renderer, texture_x, texture_y, angle);
+	//render_texture(image, renderer, texture_x, texture_y, angle);
+
+	render_queue_push(image, renderer, texture_x, texture_y, angle);
 
 	// Set texture appropratly
 	if (place_texture_automaticly)
@@ -92,3 +93,36 @@ double GameObject::get_x_previous() { return xPrevious; };
 double GameObject::get_y_previous() { return yPrevious; };
 void GameObject::auto_place_texture(bool aChoice) { place_texture_automaticly = aChoice; }
 void GameObject::set_solid(bool aChoice) { solid = aChoice; }
+
+
+void GameObject::render_queue_push(SDL_Texture* aTex, SDL_Renderer* aRen, double aX, double aY, double aAngle)
+{
+	//std::list<RenderObject> list;
+
+	RenderObject r;
+	r.tex = aTex;
+	r.ren = aRen;
+	r.x = aX;
+	r.y = aY;
+	r.angle = aAngle;
+
+	//std::cout << "render_queue_push: aTex: " << aTex << '\n';
+
+	render_queue.push_back(r);
+	//set_render_queue(list);
+
+	//std::cout << "render_queue_push: render_queue.size(): " << render_queue.size() << '\n';
+	//std::cout << "render_queue_push: list.size(): " << list.size() << '\n';
+}
+
+void GameObject::render_loop()
+{
+	auto i = render_queue.begin();
+	render_texture(i->tex, i->ren, i->x, i->y, i->angle);
+	//std::cout << "render_loop: size(): " << render_queue.size() << '\n';
+
+	//std::cout << "render_queue_push: aTex: " << i->tex << '\n';
+
+	if (render_queue.size() > 0)
+		render_queue.pop_front();
+}
