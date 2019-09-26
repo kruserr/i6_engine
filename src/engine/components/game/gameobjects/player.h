@@ -7,7 +7,8 @@ class Player : public GameObject
 {
 private:
 	bool keyboard_hold_left, keyboard_hold_right, keyboard_hold_up, keyboard_hold_down;
-	double player_speed = 0.6;
+    double player_speed = 0.6;
+	Sint32 mouse_x, mouse_y;
 
 public:
 	Player();

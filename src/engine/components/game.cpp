@@ -45,10 +45,7 @@ double Engine::game_loop()
     //INIT GAMELOGIC
     GameLogic gamelogic(renderer);
     gamelogic.initilize();
-
-    // Init Render Loop
-    Texture* texture = new Texture();
-
+    
     // Game Loop
     while (!quit)
     {
@@ -79,7 +76,6 @@ double Engine::game_loop()
     }
 
     // Clean and Exit
-    delete texture;
     cleanup(renderer, window);
     SDL_Quit();
 

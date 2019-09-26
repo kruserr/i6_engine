@@ -10,6 +10,8 @@ Player::Player()
     keyboard_hold_right = false;
     keyboard_hold_up = false;
     keyboard_hold_down = false;
+    mouse_x = 0;
+    mouse_y = 0;
 }
 
 void Player::keyboard_input(SDL_Event event)
@@ -46,6 +48,8 @@ void Player::keyboard_input(SDL_Event event)
                 case SDLK_s:
                     keyboard_hold_down = true;
                     break;
+
+                
             }
             break;
         case SDL_KEYUP:
@@ -80,6 +84,11 @@ void Player::keyboard_input(SDL_Event event)
                     break;
             }
             break;
+
+        case SDL_MOUSEMOTION:
+            mouse_x = event.motion.x;
+            mouse_y = event.motion.y;
+            break;
     }
 }
 
@@ -89,36 +98,39 @@ void Player::movement(double aSync)
     if (keyboard_hold_left == true)
     {
         set_hspeed(-player_speed * aSync);
-        flip_texture(SDL_FLIP_NONE);
+        //setAngle(180);
+        //flip_texture(SDL_FLIP_HORIZONTAL);
+        
     }
 
     if (keyboard_hold_right == true)
     {
         set_hspeed(player_speed * aSync);
-        flip_texture(SDL_FLIP_HORIZONTAL);
+        //setAngle(0);
+        //flip_texture(SDL_FLIP_NONE);
     }
 
     if (keyboard_hold_left == true && keyboard_hold_right == true)
-    {
         set_hspeed(0);
-    }
     // ############################## X Movement ##############################
 
     // ############################## Y Movement ##############################
     if (keyboard_hold_up == true)
     {
         set_vspeed(-player_speed * aSync);
+        //setAngle(270);
+        //flip_texture(SDL_FLIP_VERTICAL);
     }
 
     if (keyboard_hold_down == true)
     {
         set_vspeed(player_speed * aSync);
+        //setAngle(90);
+        //flip_texture(SDL_FLIP_VERTICAL);
     }
 
     if (keyboard_hold_up == true && keyboard_hold_down == true)
-    {
         set_vspeed(0);
-    }
     // ############################## Y Movement ##############################
 
 
@@ -128,4 +140,9 @@ void Player::movement(double aSync)
     if (keyboard_hold_up == false && keyboard_hold_down == false)
         set_vspeed(0);
     // ############################## 0 Movement ##############################
+
+
+    // ############################## Mouse Movement ##############################
+    setAngle(mouse_x * mouse_y / 1000);
+    // ############################## Mouse Movement ##############################
 }
