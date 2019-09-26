@@ -3,15 +3,15 @@
 
 #include "..//GameObject.h"
 
-	class Wall : public GameObject
-	{
-	private:
+class Wall : public GameObject
+{
+private:
 
-	public:
-		Wall();
+public:
+	Wall();
 
-		//gameobject components
-		void gameObjectRun() { refresh(); }
-	};
+	//gameobject components
+	void gameObjectRun() { refresh(); }
+};
 
 #endif // !WALL_H

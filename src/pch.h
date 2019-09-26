@@ -7,7 +7,8 @@
 #include <iomanip>                  // IO Spacing
 //#include <random>                   // Random Number Generator
 #include <string>                   // Char Container
-#include <vector>                   // Array Container
+#include <vector>                   // Stack Container
+#include <list>                   // Linked List Container
 #include <assert.h>                 // Testing
 //#include <thread>                   // Threading
 //#include <mutex>                    // Mutex locking

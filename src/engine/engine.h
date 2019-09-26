@@ -15,22 +15,22 @@ extern double camera_pos_y_old;
 extern double delta_camera_pos_x;
 extern double delta_camera_pos_y;
 
-    class Engine
-    {
-    private:
+class Engine
+{
+private:
 
-    public:
-        Engine();
-        ~Engine();
+public:
+    Engine();
+    ~Engine();
 
-        // components/core.cpp
-        /* bool is_prime(unsigned long long x);
-        unsigned long long next_prime(unsigned long long x);
-        bool is_prime_threaded(unsigned long long x);
-        unsigned long long next_prime_threaded(unsigned long long x); */
+    // components/core.cpp
+    /* bool is_prime(unsigned long long x);
+    unsigned long long next_prime(unsigned long long x);
+    bool is_prime_threaded(unsigned long long x);
+    unsigned long long next_prime_threaded(unsigned long long x); */
 
-        // components/game.cpp
-        double game_loop();
-    };
+    // components/game.cpp
+    double game_loop();
+};
 
 #endif

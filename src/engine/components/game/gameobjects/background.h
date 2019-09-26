@@ -3,15 +3,15 @@
 
 #include "..//GameObject.h"
 
-	class Background : public GameObject
-	{
-	private:
+class Background : public GameObject
+{
+private:
 
-	public:
-		Background();
+public:
+	Background();
 
-		//gameobject components
-		void gameObjectRun() { refresh(); }
-	};
+	//gameobject components
+	void gameObjectRun() { refresh(); }
+};
 
 #endif // !BACKGROUND_H
