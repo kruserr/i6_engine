@@ -7,10 +7,8 @@ double Engine::game_loop()
 {
     // Scoped Variables
     bool quit = false;
-    SDL_DisplayMode current;
-    //SDL_GetCurrentDisplayMode(i, &current);
-
-    //std::cout << current.h << "; " << current.w << "; " << current.refresh_rate << '\n';
+    int screen_mode = -1;
+    SDL_Window *window = nullptr;
 
     // Init
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -25,9 +23,21 @@ double Engine::game_loop()
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
+    // Display Config
+    SDL_DisplayMode current_screen;
+    //SDL_GetNumVideoDisplays();
+    //SDL_GetCurrentDisplayMode(0, &current_screen);
+    SDL_GetDesktopDisplayMode(0, &current_screen);
+    std::cout << current_screen.h << "; " << current_screen.w << "; " << current_screen.refresh_rate << '\n';
+
     // Init Window
-    SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
-    //SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN);
+    if (screen_mode == 0)
+        window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_FULLSCREEN_DESKTOP);
+    else if (screen_mode == 1)
+        window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, current_screen.w, current_screen.h, SDL_WINDOW_BORDERLESS);
+    else
+        window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, 0);
+
     if (window == nullptr)
     {
         //error_log(std::cout, "CreateWindow");
