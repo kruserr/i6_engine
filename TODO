@@ -1,0 +1,52 @@
+# Sample SDL Vulkan Code
+
+// be sure to initialize your SDL window with the vulkan flag
+window = SDL_CreateWindow("My App",
+    SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    1280, 720,
+    SDL_WINDOW_VULKAN);
+
+// initialize the vulkan instance
+#include <SDL.h>
+#include <SDL_vulkan.h>
+#include <vector>
+
+// in some init function...
+  
+uint32_t extensionCount;
+SDL_Vulkan_GetInstanceExtensions(window, &extensionCount, nullptr);
+std::vector<const char *> extensionNames(extensionCount);
+SDL_Vulkan_GetInstanceExtensions(window, &extensionCount, extensionNames.data());
+
+VkApplicationInfo appInfo {};
+// TODO: fill this out
+
+std::vector<const char *> layerNames {};
+// uncomment below if you want to use validation layers
+// layerNames.push_back("VK_LAYER_LUNARG_standard_validation");
+
+VkInstanceCreateInfo info {};
+info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+info.pApplicationInfo = &appInfo;
+info.enabledLayerCount = layerNames.size();
+info.ppEnabledLayerNames = layerNames.data();
+info.enabledExtensionCount = extensionNames.size();
+info.ppEnabledExtensionNames = extensionNames.data();
+
+VkResult res;
+VkInstance instance;
+res = vkCreateInstance(&info, nullptr, &instance);
+if (res != VK_SUCCESS) {
+  // do some error checking
+}
+
+// now that you have a window and a vulkan instance you need a surface
+VkSurfaceKHR surface;
+if (!SDL_Vulkan_CreateSurface(window, instance, &surface)) {
+  // failed to create a surface!
+}
+
+// at this point you have a window, vulkan instance and a vulkan surface
+// SDL is out of your way and you can use the vulkan api to enumerate the
+// physical devices, create a logical device plus queues, and create your
+// swapchain.

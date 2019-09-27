@@ -1,8 +1,9 @@
-namespace i6
+#include "../../pch.h"
+
+// Error log
+/*
+void error_log(std::ostream& os, const std::string& msg)
 {
-    // Error log
-    void Engine::error_log(std::ostream &os, const std::string &msg)
-    {
-        os << msg << " error: " << SDL_GetError() << '\n';
-    }
+	os << msg << " error: " << SDL_GetError() << '\n';
 }
+*/

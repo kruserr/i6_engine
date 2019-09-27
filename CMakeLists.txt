@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 project(i6_engine)
 
-# Include Compiler Flag Checker
-include(CheckCXXCompilerFlag)
+# Include CMake
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}" ${CMAKE_MODULE_PATH})
 
-# if supported -std=c++11 else CMAKE_CXX_STANDARD 11
+# Enable C++11
+include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 if(COMPILER_SUPPORTS_CXX11)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -14,7 +15,7 @@ else()
     message(STATUS "CMAKE_CXX_STANDARD 11 enabled ( if it crashes your compiler ${CMAKE_CXX_COMPILER} is not supported )")
 endif()
 
-# Function to Only Enable Compiler Flag if Supported
+# Only Enable Supported Compiler Flags
 function(enable_cxx_compiler_flag_if_supported flag)
     string(FIND "${CMAKE_CXX_FLAGS}" "${flag}" flag_already_set)
     if(flag_already_set EQUAL -1)
@@ -33,35 +34,51 @@ endfunction()
 enable_cxx_compiler_flag_if_supported("-Wall")
 enable_cxx_compiler_flag_if_supported("-Wextra")
 enable_cxx_compiler_flag_if_supported("-O3")
-enable_cxx_compiler_flag_if_supported("-pthread")
-#enable_cxx_compiler_flag_if_supported("--coverage")
-#enable_cxx_compiler_flag_if_supported("-fprofile-arcs")
-#enable_cxx_compiler_flag_if_supported("-ftest-coverage")
+if(UNIX)
+    enable_cxx_compiler_flag_if_supported("-pthread")
+endif()
 
 # Clang Commands
-enable_cxx_compiler_flag_if_supported("-Weverything")
-enable_cxx_compiler_flag_if_supported("-Ofast")
+if(UNIX)
+    enable_cxx_compiler_flag_if_supported("-Weverything")
+    enable_cxx_compiler_flag_if_supported("-Ofast")
+endif()
 
 # MSVC Commands
-enable_cxx_compiler_flag_if_supported("/W4")
-enable_cxx_compiler_flag_if_supported("/O2")
+if(WIN32)
+    enable_cxx_compiler_flag_if_supported("/W4")
+    enable_cxx_compiler_flag_if_supported("/O2")
+endif()
 
-# OpenGL Commands
-#enable_cxx_compiler_flag_if_supported("-lSDL2main")
-enable_cxx_compiler_flag_if_supported("-lSDL2")
+# Include SDL2
+add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/SDL2)
 
-
-# Default to Build Type Release else use User Setting
+# Set Default Build to Release
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Select Type of Build: Debug, Release, RelWithDebInfo, MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
-# Location of .cpp src Directories
+# src Files
 file(GLOB dir_src "${PROJECT_SOURCE_DIR}/src/*.cpp")
-file(GLOB dir_src_engine "${PROJECT_SOURCE_DIR}/src/engine/*.cpp")
 file(GLOB dir_src_timer "${PROJECT_SOURCE_DIR}/src/etc/timer/*.cpp")
 file(GLOB dir_src_render "${PROJECT_SOURCE_DIR}/src/etc/render/*.cpp")
 file(GLOB dir_src_proc "${PROJECT_SOURCE_DIR}/src/etc/proc/*.cpp")
+file(GLOB dir_src_engine "${PROJECT_SOURCE_DIR}/src/engine/*.cpp")
+file(GLOB dir_src_engine_components "${PROJECT_SOURCE_DIR}/src/engine/components/*.cpp")
+file(GLOB dir_src_engine_components_game "${PROJECT_SOURCE_DIR}/src/engine/components/game/*.cpp")
+file(GLOB dir_src_engine_components_game_gameobjects "${PROJECT_SOURCE_DIR}/src/engine/components/game/gameobjects/*.cpp")
 
-# Make exec from .cpp src Directories
-add_executable(i6_engine ${dir_src} ${dir_src_engine} ${dir_src_timer} ${dir_src_render} ${dir_src_proc})
+# exec
+add_executable(i6_engine ${dir_src} ${dir_src_timer} ${dir_src_render} ${dir_src_proc} ${dir_src_engine} ${dir_src_engine_components} ${dir_src_engine_components_game} ${dir_src_engine_components_game_gameobjects})
+
+# link
+target_link_libraries(${PROJECT_NAME} SDL2-static)
+
+#if(UNIX)
+    #target_link_libraries(${PROJECT_NAME} SDL2)
+#elseif(WIN32)
+    #target_link_libraries(${PROJECT_NAME} SDL2-static)
+#endif()
+
+# Copy assets folder to build
+add_custom_command(TARGET i6_engine PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/src/inc/assets $<TARGET_FILE_DIR:i6_engine>/inc/assets/)

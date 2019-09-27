@@ -1,38 +1,22 @@
 #include "../pch.h"
 #include "components/maintence.cpp"
-#include "components/debug.cpp"
-#include "components/core.cpp"
-#include "components/texture.cpp"
-#include "components/game.cpp"
-#include "components/player.cpp"
 
-namespace i6
+//CAMERA POSITION
+double camera_pos_x = 0;
+double camera_pos_y = 0;
+double screen_x_origon = 0;
+double screen_y_origon = 0;
+double camera_pos_x_old = camera_pos_x;
+double camera_pos_y_old = camera_pos_y;
+double delta_camera_pos_x = 0;
+double delta_camera_pos_y = 0;
+
+Engine::Engine()
 {
-    Engine::Engine()
-    {
-        i6::Render render;
-        render.clear_console();
+	game_loop();
+}
 
-        //long x = 21474913;
-        //unsigned long long x = 2147483647;
-        //unsigned long long x = 67280421310721;
-        //unsigned long long x = 672804213107214533;
-        //u_int64_t x = 18446744073709600000;
-        /* unsigned long long x = 9223372036854770027;
-
-        std::cout << next_prime_threaded(x) << '\n';
-
-        std::cout << is_prime_threaded(x) << '\n';
-        std::cout << is_prime_threaded(x) << '\n';
-        std::cout << is_prime_threaded(x) << "\n\n"; */
-
-        game_loop();
-    }
-
-    Engine::~Engine()
-    {
-        i6::Render render;
-
-        render.hang_console();
-    }
+Engine::~Engine()
+{
+	
 }
