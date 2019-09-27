@@ -3,12 +3,14 @@
 #include "debug.cpp"
 #include "game/gamelogic.h"
 
-
 double Engine::game_loop()
 {
-
     // Scoped Variables
     bool quit = false;
+    SDL_DisplayMode current;
+    //SDL_GetCurrentDisplayMode(i, &current);
+
+    //std::cout << current.h << "; " << current.w << "; " << current.refresh_rate << '\n';
 
     // Init
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -18,9 +20,14 @@ double Engine::game_loop()
         return 1;
     }
 
+    // Settings
+    SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" );
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+
     // Init Window
-    //SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
-    SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, SDL_WINDOW_SHOWN);
+    SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN);
+    //SDL_Window *window = SDL_CreateWindow("i6_engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width, screen_height, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN);
     if (window == nullptr)
     {
         //error_log(std::cout, "CreateWindow");

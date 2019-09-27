@@ -10,8 +10,13 @@ Player::Player()
     keyboard_hold_right = false;
     keyboard_hold_up = false;
     keyboard_hold_down = false;
+    player_angle = 0.0;
     mouse_x = 0;
     mouse_y = 0;
+    delta_x = 0;
+    delta_y = 0;
+    delta_x_norm = 0;
+    delta_y_norm = 0;
 }
 
 void Player::keyboard_input(SDL_Event event)
@@ -143,6 +148,14 @@ void Player::movement(double aSync)
 
 
     // ############################## Mouse Movement ##############################
-    setAngle(mouse_x * mouse_y / 1000);
+    delta_x = mouse_x - get_x();
+    delta_y = mouse_y - get_y();
+
+    delta_x_norm = delta_x / (SDL_sqrt(delta_x * delta_x + delta_y * delta_y));
+    delta_y_norm = delta_y / (SDL_sqrt(delta_x * delta_x + delta_y * delta_y));
+
+    player_angle = SDL_atan2(delta_y_norm, delta_x_norm) * (180/M_PI);
+
+    setAngle(player_angle);
     // ############################## Mouse Movement ##############################
 }
