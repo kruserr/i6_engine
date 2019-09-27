@@ -2,6 +2,7 @@
 #include "gameobjects/player.h"
 #include "gameobjects/wall.h"
 #include "gameobjects/background.h"
+#include "../maintence.cpp"
 
 GameLogic::GameLogic(SDL_Renderer* aRenderer)
 {
@@ -12,6 +13,7 @@ GameLogic::GameLogic(SDL_Renderer* aRenderer)
 
 GameLogic::~GameLogic()
 {
+    cleanup(renderer);
     delete player;	// Deconstruct player
     delete background;	// Deconstruct background
 }

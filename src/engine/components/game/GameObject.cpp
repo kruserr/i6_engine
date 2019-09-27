@@ -20,11 +20,14 @@ GameObject::GameObject()
 	angle = 0;
 	place_texture_automaticly = true;
 	solid = false;
+	render_queue = new std::list<RenderObject>;
 }
 
 GameObject::~GameObject()
 {
+	render_queue->clear();
 	cleanup(image);
+	cleanup(renderer);
 }
 
 void GameObject::init()
@@ -45,9 +48,9 @@ void GameObject::refresh()
 	yPrevious = y;
 
 	// Render Image
-	//render_texture(image, renderer, texture_x, texture_y, angle);
+	render_texture(image, renderer, texture_x, texture_y, angle);
 
-	render_queue_push(image, renderer, texture_x, texture_y, angle);
+	//ender_queue_push(image, renderer, texture_x, texture_y, angle);
 
 	// Set texture appropratly
 	if (place_texture_automaticly)
@@ -76,6 +79,7 @@ bool GameObject::collides_with(GameObject *other)
 	}
 
 	std::cout << collision_detected << std::endl;
+	
 	return collision_detected;
 }
 
@@ -97,32 +101,24 @@ void GameObject::set_solid(bool aChoice) { solid = aChoice; }
 
 void GameObject::render_queue_push(SDL_Texture* aTex, SDL_Renderer* aRen, double aX, double aY, double aAngle)
 {
-	//std::list<RenderObject> list;
+	RenderObject *r = new RenderObject();
+	r->tex = aTex;
+	r->ren = aRen;
+	r->x = aX;
+	r->y = aY;
+	r->angle = aAngle;
 
-	RenderObject r;
-	r.tex = aTex;
-	r.ren = aRen;
-	r.x = aX;
-	r.y = aY;
-	r.angle = aAngle;
-
-	//std::cout << "render_queue_push: aTex: " << aTex << '\n';
-
-	render_queue.push_back(r);
-	//set_render_queue(list);
-
-	//std::cout << "render_queue_push: render_queue.size(): " << render_queue.size() << '\n';
-	//std::cout << "render_queue_push: list.size(): " << list.size() << '\n';
+	render_queue->push_back(*r);
+	delete r;
 }
 
-void GameObject::render_loop()
+void GameObject::render_loop(std::__cxx11::list<RenderObject>::iterator i)
 {
-	auto i = render_queue.begin();
-	render_texture(i->tex, i->ren, i->x, i->y, i->angle);
-	//std::cout << "render_loop: size(): " << render_queue.size() << '\n';
+	if (!render_queue->empty())
+	{
+		i = render_queue->begin();
+		render_texture(i->tex, i->ren, i->x, i->y, i->angle);
 
-	//std::cout << "render_queue_push: aTex: " << i->tex << '\n';
-
-	if (render_queue.size() > 0)
-		render_queue.pop_front();
+		render_queue->pop_front();
+	}
 }

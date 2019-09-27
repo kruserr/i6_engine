@@ -18,10 +18,9 @@ private:
 	SDL_RendererFlip fliptype = SDL_FLIP_NONE;
 
 public:
-
 	// components/texture.cpp
-	SDL_Texture* load_texture(const std::string& file, SDL_Renderer* ren);
-	void render_texture(SDL_Texture* tex, SDL_Renderer* ren, double x, double y, double aAngle);
+	SDL_Texture* load_texture(const std::string& file, SDL_Renderer* renderer, SDL_Texture *texture = nullptr, SDL_Surface *loadedImage = nullptr);
+	void render_texture(SDL_Texture* texture, SDL_Renderer* renderer, double x, double y, double aAngle);
 	void render_texture_ext(SDL_Texture* texture, SDL_Renderer* renderer, double x, double y, double aAngle, double aWidth, double aHeight);
 	void set_flip_type(SDL_RendererFlip aFlipType) { fliptype = aFlipType; }
 };

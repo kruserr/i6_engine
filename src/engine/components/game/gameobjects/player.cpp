@@ -53,9 +53,8 @@ void Player::keyboard_input(SDL_Event event)
                 case SDLK_s:
                     keyboard_hold_down = true;
                     break;
-
-                
             }
+            
             break;
         case SDL_KEYUP:
             switch (event.key.keysym.sym)

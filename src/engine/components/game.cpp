@@ -12,6 +12,7 @@ double Engine::game_loop()
 
     // Init
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    //if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
         //error_log(std::cout, "SDL_Init");
         
@@ -59,6 +60,9 @@ double Engine::game_loop()
         return 1;
     }
 
+    // Event
+    SDL_Event event;
+
     //INIT GAMELOGIC
     GameLogic gamelogic(renderer);
     gamelogic.initilize();
@@ -66,12 +70,11 @@ double Engine::game_loop()
     // Game Loop
     while (!quit)
     {
+        // Event
+        SDL_PollEvent(&event);
+
         // Animation Sync
         gamelogic.set_sync_start();
-
-        // Event
-        SDL_Event event;
-        SDL_PollEvent(&event);
 
         // Clear Renderer
         SDL_RenderClear(renderer);
@@ -82,14 +85,14 @@ double Engine::game_loop()
         // Render Loop
         gamelogic.r_loop();
 
-        // Check if loop shall end
-        if (event.type == SDL_QUIT)
-            quit = true;
-
         SDL_RenderPresent(renderer);
 
         // Animation Sync
         gamelogic.set_sync_end();
+
+        // Exit
+        if (event.type == SDL_QUIT)
+            quit = true;
     }
 
     // Clean and Exit

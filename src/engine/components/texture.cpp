@@ -3,17 +3,15 @@
 #include "debug.cpp"
 #include "texture.h"
 
-SDL_Texture* Texture::load_texture(const std::string& file, SDL_Renderer* renderer)
+SDL_Texture* Texture::load_texture(const std::string& file, SDL_Renderer* renderer, SDL_Texture *texture, SDL_Surface *loadedImage)
 {
-	// Initialize to nullptr to avoid dangling pointer issues
-	SDL_Texture *texture = nullptr;
 	std::string inc_dir;
 
 	// Load the image
 	inc_dir = "inc/assets/";
 	inc_dir.append(file);
 	inc_dir.append(".bmp");
-	SDL_Surface *loadedImage = SDL_LoadBMP(inc_dir.c_str());
+	loadedImage = SDL_LoadBMP(inc_dir.c_str());
 
 	// If path fails try new path
 	if (loadedImage == nullptr)
@@ -37,7 +35,7 @@ SDL_Texture* Texture::load_texture(const std::string& file, SDL_Renderer* render
 	if (loadedImage != nullptr)
 	{
 		texture = SDL_CreateTextureFromSurface(renderer, loadedImage);
-		cleanup(loadedImage);
+		//cleanup(loadedImage);
 
 		// Make sure converting went ok too
 		if (texture == nullptr)
@@ -47,6 +45,7 @@ SDL_Texture* Texture::load_texture(const std::string& file, SDL_Renderer* render
 	}
 	else
 	{
+		//cleanup(loadedImage);
 		//error_log(std::cout, "LoadBMP");
 	}
 
