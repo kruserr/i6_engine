@@ -4,15 +4,15 @@ project(i6_engine)
 # Include CMake
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}" ${CMAKE_MODULE_PATH})
 
-# Enable C++11
+# Enable C++20
 include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-if(COMPILER_SUPPORTS_CXX11)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-    message(STATUS "-std=c++11 enabled")
+CHECK_CXX_COMPILER_FLAG("-std=c++2a" COMPILER_SUPPORTS_CXX20)
+if(COMPILER_SUPPORTS_CXX20)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a")
+    message(STATUS "-std=c++2a enabled")
 else()
-    set(CMAKE_CXX_STANDARD 11)
-    message(STATUS "CMAKE_CXX_STANDARD 11 enabled ( if it crashes your compiler ${CMAKE_CXX_COMPILER} is not supported )")
+    set(CMAKE_CXX_STANDARD 20)
+    message(STATUS "CMAKE_CXX_STANDARD 20 enabled ( if it crashes your compiler ${CMAKE_CXX_COMPILER} is not supported )")
 endif()
 
 # Only Enable Supported Compiler Flags
@@ -31,8 +31,9 @@ function(enable_cxx_compiler_flag_if_supported flag)
 endfunction()
 
 # GCC Commands
-enable_cxx_compiler_flag_if_supported("-Wall")
-enable_cxx_compiler_flag_if_supported("-Wextra")
+# devel
+#enable_cxx_compiler_flag_if_supported("-Wall")
+#enable_cxx_compiler_flag_if_supported("-Wextra")
 enable_cxx_compiler_flag_if_supported("-O3")
 if(UNIX)
     enable_cxx_compiler_flag_if_supported("-pthread")
@@ -40,7 +41,8 @@ endif()
 
 # Clang Commands
 if(UNIX)
-    enable_cxx_compiler_flag_if_supported("-Weverything")
+    # devel
+    #enable_cxx_compiler_flag_if_supported("-Weverything")
     enable_cxx_compiler_flag_if_supported("-Ofast")
 endif()
 

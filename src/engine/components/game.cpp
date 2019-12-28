@@ -29,7 +29,7 @@ double Engine::game_loop()
     //SDL_GetNumVideoDisplays();
     //SDL_GetCurrentDisplayMode(0, &current_screen);
     SDL_GetDesktopDisplayMode(0, &current_screen);
-    std::cout << current_screen.h << "; " << current_screen.w << "; " << current_screen.refresh_rate << '\n';
+    //std::cout << current_screen.h << "; " << current_screen.w << "; " << current_screen.refresh_rate << '\n';
 
     // Init Window
     if (screen_mode == 0)

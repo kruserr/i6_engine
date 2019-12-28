@@ -112,7 +112,7 @@ void GameObject::render_queue_push(SDL_Texture* aTex, SDL_Renderer* aRen, double
 	delete r;
 }
 
-void GameObject::render_loop(std::__cxx11::list<RenderObject>::iterator i)
+void GameObject::render_loop(std::list<RenderObject>::iterator i)
 {
 	if (!render_queue->empty())
 	{

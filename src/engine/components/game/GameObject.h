@@ -63,7 +63,7 @@ public:
 	void set_solid(bool aChoice);
 	bool collides_with(GameObject *other);
 	void render_queue_push(SDL_Texture* aTex, SDL_Renderer* aRen, double aX, double aY, double aAngle);
-	void render_loop(std::__cxx11::list<RenderObject>::iterator i = {});
+	void render_loop(std::list<RenderObject>::iterator i = {});
 };
 
 #endif // !GAMEOBJECT_H
