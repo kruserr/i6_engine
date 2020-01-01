@@ -40,7 +40,6 @@ if(UNIX)
 
     # prod
     enable_cxx_compiler_flag_if_supported("-O2")
-    enable_cxx_compiler_flag_if_supported("-Wl,--strip-all")
     
     # hardened
     #enable_cxx_compiler_flag_if_supported("-O2")
