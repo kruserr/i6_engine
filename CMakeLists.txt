@@ -30,25 +30,41 @@ function(enable_cxx_compiler_flag_if_supported flag)
     endif()
 endfunction()
 
-# GCC Commands
-# devel
-#enable_cxx_compiler_flag_if_supported("-Wall")
-#enable_cxx_compiler_flag_if_supported("-Wextra")
-enable_cxx_compiler_flag_if_supported("-O3")
-if(UNIX)
-    enable_cxx_compiler_flag_if_supported("-pthread")
-endif()
-
-# Clang Commands
 if(UNIX)
     # devel
+    #enable_cxx_compiler_flag_if_supported("-Wall")
+    #enable_cxx_compiler_flag_if_supported("-Wextra")
     #enable_cxx_compiler_flag_if_supported("-Weverything")
-    enable_cxx_compiler_flag_if_supported("-Ofast")
+    #enable_cxx_compiler_flag_if_supported("-g3")
+    #enable_cxx_compiler_flag_if_supported("-ggdb")
+
+    # prod
+    enable_cxx_compiler_flag_if_supported("-O2")
+    enable_cxx_compiler_flag_if_supported("-Wl,--strip-all")
+    
+    # hardened
+    #enable_cxx_compiler_flag_if_supported("-O2")
+    #enable_cxx_compiler_flag_if_supported("-D_FORTIFY_SOURCE=2")
+    #enable_cxx_compiler_flag_if_supported("-Wl,--strip-all")
+    #enable_cxx_compiler_flag_if_supported("-pie")
+    #enable_cxx_compiler_flag_if_supported("-fPIE")
+    #enable_cxx_compiler_flag_if_supported("-fstack-protector-strong")
+    #enable_cxx_compiler_flag_if_supported("-Wl,-z,now")
+    #enable_cxx_compiler_flag_if_supported("-Wl,-z,relro")
+    #enable_cxx_compiler_flag_if_supported("-Wformat")
+    #enable_cxx_compiler_flag_if_supported("-Wformat-security")
+    
+    # test
+    #enable_cxx_compiler_flag_if_supported("-O2")
+    #enable_cxx_compiler_flag_if_supported("-Wl,--strip-all")
+    #enable_cxx_compiler_flag_if_supported("-fno-stack-protector")
 endif()
 
-# MSVC Commands
 if(WIN32)
+    # MSVC Commands
+    # devel
     enable_cxx_compiler_flag_if_supported("/W4")
+    # prod
     enable_cxx_compiler_flag_if_supported("/O2")
 endif()
 
@@ -75,12 +91,6 @@ add_executable(i6_engine ${dir_src} ${dir_src_timer} ${dir_src_render} ${dir_src
 
 # link
 target_link_libraries(${PROJECT_NAME} SDL2-static)
-
-#if(UNIX)
-    #target_link_libraries(${PROJECT_NAME} SDL2)
-#elseif(WIN32)
-    #target_link_libraries(${PROJECT_NAME} SDL2-static)
-#endif()
 
 # Copy assets folder to build
 add_custom_command(TARGET i6_engine PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/src/inc/assets $<TARGET_FILE_DIR:i6_engine>/inc/assets/)
